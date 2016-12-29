@@ -6,16 +6,25 @@ public class crash_script : MonoBehaviour {
 	public int WalkSpeed = 10;
 	public int TurnSpeed = 50;
 	public int JumpForce = 10;
-//	private Animation anim;
+	Animator myAnim;
+	bool isWalking=false;
 
 	// Use this for initialization
 	void Start () {
-//		anim = gameObject.GetComponent<Animator> ();
+		myAnim = GetComponent <Animator> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		float v = Input.GetAxis ("Vertical");
+		if(v!=0 && !isWalking){
+			myAnim.SetBool ("isWalking",true);
+			isWalking = true;
+		}
+		if(v==0){
+			myAnim.SetBool ("isWalking",false);
+			isWalking = false;
+		}
 		transform.Translate (Vector3.forward * v * WalkSpeed * Time.deltaTime);
 		Rigidbody rb = GetComponent<Rigidbody> ();
 		if (Input.GetButtonDown ("Jump")) {
