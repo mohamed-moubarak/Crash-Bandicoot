@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class wumpa_fruit_script : MonoBehaviour {
-
+	GameObject player;
 	// Use this for initialization
 	void Start () {
-	
+		player = GameObject.Find ("Crash");
 	}
 	
 	// Update is called once per frame
@@ -14,6 +14,8 @@ public class wumpa_fruit_script : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider c){
-		Destroy (this.gameObject);
+		
+		if(player.GetComponent <Collider>()==c)
+			Destroy (this.gameObject);
 	}
 }

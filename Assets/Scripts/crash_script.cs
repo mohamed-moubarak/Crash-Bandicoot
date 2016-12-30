@@ -32,5 +32,8 @@ public class crash_script : MonoBehaviour {
 		}
 		float h = Input.GetAxis ("Horizontal");
 		transform.Rotate (new Vector3 (0, 1, 0) * h*Time.deltaTime*TurnSpeed);
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			myAnim.SetTrigger ("spin");
+		}
 	}
 }
