@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class crash_script : MonoBehaviour {
-	public int WalkSpeed = 10;
+	public int WalkSpeed = 20;
 	public int TurnSpeed = 50;
 	public int JumpForce = 10;
 	Animator myAnim;
