@@ -28,9 +28,13 @@ public class crash_script : MonoBehaviour {
 		transform.Translate (Vector3.forward * v * WalkSpeed * Time.deltaTime);
 		Rigidbody rb = GetComponent<Rigidbody> ();
 		if (Input.GetButtonDown ("Jump")) {
+			myAnim.SetTrigger ("jump");
 			rb.AddForce (new Vector3 (0, JumpForce, 0), ForceMode.Impulse);
 		}
 		float h = Input.GetAxis ("Horizontal");
 		transform.Rotate (new Vector3 (0, 1, 0) * h*Time.deltaTime*TurnSpeed);
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			myAnim.SetTrigger ("spin");
+		}
 	}
 }
