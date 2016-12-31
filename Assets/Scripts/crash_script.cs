@@ -8,14 +8,20 @@ public class crash_script : MonoBehaviour {
 	public int JumpForce = 10;
 	Animator myAnim;
 	bool isWalking=false;
+	public int hp;
+	public int wumpacount;
 
 	// Use this for initialization
 	void Start () {
 		myAnim = GetComponent <Animator> ();
+		wumpacount = 0;
+		hp = 3;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		
+		//Controls
 		float v = Input.GetAxis ("Vertical");
 		if(v!=0 && !isWalking){
 			myAnim.SetBool ("isWalking",true);
@@ -35,6 +41,12 @@ public class crash_script : MonoBehaviour {
 		transform.Rotate (new Vector3 (0, 1, 0) * h*Time.deltaTime*TurnSpeed);
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			myAnim.SetTrigger ("spin");
+		}
+
+		//Wumpa Count
+		if(wumpacount==100){
+			hp++;
+			wumpacount = 0;
 		}
 	}
 }
